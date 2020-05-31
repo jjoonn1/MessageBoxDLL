@@ -10,10 +10,13 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
+		messageBox();
+		IATHooking(GetModuleHandleA(NULL), "pi", messageBox);
+		messageBox();
+		break;
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
-		messageBox();
 		break;
 	}
 	return TRUE;
